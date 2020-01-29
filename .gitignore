@@ -1,0 +1,13 @@
+*.dat
+*.csv
+*.xls
+*.zip
+*~
+*.swp
+*.ipynb
+*.o
+*.mod
+*.png
+*.svg
+x*
+!img/*.*
