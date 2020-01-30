@@ -28,9 +28,9 @@ cb = colorbar;
 
 % % % output
 % fileout = 'matrix_depth_2430-01.csv';
-% fmt = ['%11.3E',repmat(',%11.3E',[1, nx-1]),'\n'];
+% fmt = ['%11.3e',repmat(',%11.3e',[1, nx-1]),'\n'];
 % % % print
 % fid = fopen(fileout,'w');
 % fprintf(fid,fmt,-arraydata');
 % fclose(fid);
-% 
+
