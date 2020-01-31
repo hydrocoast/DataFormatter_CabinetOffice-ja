@@ -1,14 +1,33 @@
 program main
     implicit none
-    !character(*) :: filename
+    character*128 :: tmpchar
+    character*128 :: filename_in, filename_out
     integer :: nx,ny
     real*8, allocatable :: data(:,:)
 
-    nx = 720
-    ny = 540
+    ! arg check
+    if (iargc() /= 3) then
+        write(*,*) "ERROR: invalid number of arguments"
+        stop
+    endif
+
+    ! filename
+    call getarg(1,filename_in)
+    filename_out = filename_in(1:len_trim(filename_in)-4)//'.csv'
+    write(*,*) '    IN  = ', trim(filename_in)
+    write(*,*) '    OUT = ', trim(filename_out)
+
+    ! nx and ny
+    call getarg(2,tmpchar)
+    read(tmpchar,'(I5)') nx
+    call getarg(3,tmpchar)
+    read(tmpchar,'(I5)') ny
+    ! allocation
     allocate(data(ny,nx))
 
-    call formatter('../depth/system08/depth_2430-01.dat', nx, ny, data)
-    call write_matrix('matrix_depth_2430-01.csv', nx, ny, -data)
+    ! read
+    call formatter(trim(filename_in), nx, ny, data)
+    ! write
+    call write_matrix(trim(filename_out), nx, ny, -data)
 
 end program main

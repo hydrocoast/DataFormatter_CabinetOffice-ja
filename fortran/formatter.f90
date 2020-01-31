@@ -28,7 +28,7 @@ subroutine write_matrix(filename, nx, ny, arraydata)
     open(11, file=trim(filename), status='replace', action='write')
     write(11,101) (arraydata(i,:), i=1,ny)
     close(11)
-101 format((<nx-1>(1pe11.3,","),1pe11.3)) !! only for ifort (Intel compiler)
+101 format((<nx-1>(1pe14.6,","),1pe14.6)) !! only for ifort (Intel compiler)
 
     return
 end subroutine write_matrix
