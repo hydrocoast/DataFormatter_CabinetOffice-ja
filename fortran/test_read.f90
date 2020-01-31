@@ -6,21 +6,21 @@ program main
     real*8, allocatable :: data(:,:)
 
     ! arg check
-    if (iargc() /= 3) then
+    if (iargc() /= 4) then
         write(*,*) "ERROR: invalid number of arguments"
         stop
     endif
 
     ! filename
     call getarg(1,filename_in)
-    filename_out = filename_in(1:len_trim(filename_in)-4)//'.csv'
+    call getarg(2,filename_out)
     write(*,*) '    IN  = ', trim(filename_in)
     write(*,*) '    OUT = ', trim(filename_out)
 
     ! nx and ny
-    call getarg(2,tmpchar)
-    read(tmpchar,'(I5)') nx
     call getarg(3,tmpchar)
+    read(tmpchar,'(I5)') nx
+    call getarg(4,tmpchar)
     read(tmpchar,'(I5)') ny
     ! allocation
     allocate(data(ny,nx))
