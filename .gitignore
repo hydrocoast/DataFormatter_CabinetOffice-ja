@@ -10,4 +10,5 @@
 *.png
 *.svg
 x*
+.DS_Store
 !img/*.*
