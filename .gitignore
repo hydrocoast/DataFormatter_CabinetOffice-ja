@@ -4,6 +4,9 @@
 *.csv
 *.xls
 *.zip
+*.pdf
+*.ps
+*.eps
 *~
 *.swp
 *.ipynb

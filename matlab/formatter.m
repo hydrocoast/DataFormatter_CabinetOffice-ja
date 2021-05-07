@@ -5,18 +5,22 @@ function arraydata = formatter(varargin)
 %   nx, ny      : number of x- and y- grids
 %   HeaderLines : number of header lines
 %  
-narginchk(3,4)
+narginchk(3,5)
 
 filename = varargin{1};
 nx = varargin{2};
 ny = varargin{3};
 
-if nargin == 3
+if nargin < 4
     HL = 0;
 else
     HL = varargin{4};
 end
-fmt = '%8.2f';
+if nargin < 5
+    fmt = '%8.2f';
+else
+    fmt = varargin{5};
+end
 
 fid = fopen(filename,'r');
 org = textscan(fid,fmt,'HeaderLines',HL);
