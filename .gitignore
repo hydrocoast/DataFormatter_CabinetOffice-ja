@@ -1,4 +1,6 @@
 *.dat
+*.asc
+*.asv
 *.csv
 *.xls
 *.zip
