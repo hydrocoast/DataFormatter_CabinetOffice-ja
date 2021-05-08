@@ -12,8 +12,8 @@ dx = T.Var2/3;
 dy = T.Var2/3;
 nx = T.Var9*3;
 ny = T.Var10*3;
-x = T.Var3:dx:T.Var5-dx;
-y = T.Var4:dy:T.Var6-dy;
+x = T.Var3+0.5*dx:dx:T.Var5-0.5*dx;
+y = T.Var4+0.5*dy:dy:T.Var6-0.5*dy;
 [X,Y] = meshgrid(x,y);
 
 % % file

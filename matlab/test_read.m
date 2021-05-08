@@ -6,10 +6,10 @@ region_str = '08';
 resolution_str = {'2430','0810','0270','0090','0030','0010'};
 
 % % xls
-xlspath = './計算範囲設定';
+xlspath = '../計算範囲設定';
 xlsname = ['計算範囲設定_第',region_str,'系.xls'];
 % % file
-datapath = ['./地形データ_第',region_str,'系'];
+datapath = ['../地形データ_第',region_str,'系'];
 
 % % directory
 if ~exist(['zone',region_str],'dir'); mkdir(['zone',region_str]); end
@@ -27,12 +27,15 @@ for i = 1:length(resolution_str)
         arraydata = formatter(fullfile(flist(j).folder,flist(j).name), ...
                               T.Var9(j), T.Var10(j));
         
-        x = T.Var3(j):T.Var2(j):T.Var5(j)-T.Var2(j);
-        y = T.Var4(j):T.Var2(j):T.Var6(j)-T.Var2(j);        
+        dx = T.Var2(j);
+        dy = dx;
+        
+        x = T.Var3(j)+0.5*dx:dx:T.Var5(j)-0.5*dx;
+        y = T.Var4(j)+0.5*dy:dy:T.Var6(j)-0.5*dy;
         [X,Y] = meshgrid(x,y);
         
         % % print data as a file in ESRI format
-        printESRI(x, y, arraydata, T.Var2(j), strrep(flist(j).name,'dat','asc'))
+        printESRI(x, y, arraydata, dx, strrep(flist(j).name,'dat','asc'))
         movefile(strrep(flist(j).name,'dat','asc'), ['zone',region_str,'/'])
        
         % % fig
